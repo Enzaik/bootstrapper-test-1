@@ -1,8 +1,10 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
+  purge: {
+    content: ['./components/**/*.{js,jsx}', './pages/**/*.{js,jsx}'],
+    options: {
+      safelist: ['bg-green-400', 'bg-purple-600', 'bg-pink-600'],
+    },
   },
-  purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -10,6 +12,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
-  plugins: [],
-}
+  variants: {
+    extend: {
+      opacity: ['disabled'],
+      cursor: ['disabled'],
+    },
+  },
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')],
+};
